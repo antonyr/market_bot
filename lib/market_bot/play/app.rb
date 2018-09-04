@@ -116,7 +116,7 @@ module MarketBot
         end
 
         h2_more = doc.at_css("h2:contains(\"#{result[:developer]}\")")
-        if h2_more
+        if h2_more && h2_more.parent.next.present?
           more_divs                    = h2_more.parent.next.children
           result[:more_from_developer] = more_divs.search('a').select do |a|
             a['href'].start_with?('/store/apps/details')
